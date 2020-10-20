@@ -2,4 +2,6 @@
     <string name="app_name">TelegramCopy</string>
     <string name="chats_fragment">Чаты</string>
     <string name="settings_fragment">Настройки</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
