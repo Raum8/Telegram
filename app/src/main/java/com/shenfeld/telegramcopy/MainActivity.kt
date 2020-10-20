@@ -13,6 +13,8 @@ import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem
 import com.shenfeld.telegramcopy.databinding.ActivityMainBinding
+import com.shenfeld.telegramcopy.ui.ChatsFragment
+import com.shenfeld.telegramcopy.ui.SettingsFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -35,6 +37,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun initFunctionality() {
         setSupportActionBar(mToolbar)
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.main_data_container, ChatsFragment()).commit()
         createHeader()
         createDrawer()
     }
@@ -94,9 +98,17 @@ class MainActivity : AppCompatActivity() {
                     .withSelectable(false)
                     .withIcon(R.drawable.ic_menu_help)
             )
-            .withOnDrawerItemClickListener(object: Drawer.OnDrawerItemClickListener{
-                override fun onItemClick(view: View?, position: Int, drawerItem: IDrawerItem<*>): Boolean {
-                    Toast.makeText(applicationContext, "$position", Toast.LENGTH_SHORT).show()
+            .withOnDrawerItemClickListener(object : Drawer.OnDrawerItemClickListener {
+                override fun onItemClick(
+                    view: View?,
+                    position: Int,
+                    drawerItem: IDrawerItem<*>
+                ): Boolean {
+                    when (position) {
+                        7 -> supportFragmentManager.beginTransaction()
+                            .addToBackStack("")
+                            .replace(R.id.main_data_container, SettingsFragment()).commit()
+                    }
                     return false
                 }
 
