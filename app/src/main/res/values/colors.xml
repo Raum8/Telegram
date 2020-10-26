@@ -4,7 +4,9 @@
     <color name="colorPrimaryDark">#0052CC</color>
     <color name="colorAccent">#FFFFFF</color>
     <color name="colorSubtext">#95FFFFFF</color>
+    <color name="colorGray">#837E7E</color>
     <color name="colorBlack">#000000</color>
+    <color name="colorRipple">#AAA8A8</color>
 
     <!-- Material DEFAULT colors -->
     <color name="material_drawer_primary">#2196F3</color>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--Margins-->
+    <dimen name="normal_margin">16dp</dimen>
+    <dimen name="small_margin">10dp</dimen>
+
+    <!--Text sizes-->
+    <dimen name="normal_text_size">16sp</dimen>
+    <dimen name="small_text_size">14sp</dimen>
+
+    <!--Settings fragment-->
+    <dimen name="normal_icon_size">55dp</dimen>
+    <dimen name="small_icon_size">45dp</dimen>
+    <dimen name="settings_civ_border_width">2dp</dimen>
+    <dimen name="settings_cl_height_100">100dp</dimen>
+    <dimen name="ripple_effect_radius">2dp</dimen>
+
+
+</resources>
