@@ -27,7 +27,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_settings_username"
+            android:id="@+id/tv_settings_full_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/normal_margin"
@@ -48,7 +48,7 @@
             android:textSize="@dimen/small_text_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/civ_settings"
-            app:layout_constraintTop_toBottomOf="@id/tv_settings_username" />
+            app:layout_constraintTop_toBottomOf="@id/tv_settings_full_name" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

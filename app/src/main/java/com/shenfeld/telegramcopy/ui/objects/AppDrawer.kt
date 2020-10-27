@@ -13,6 +13,7 @@ import com.mikepenz.materialdrawer.model.ProfileDrawerItem
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem
 import com.shenfeld.telegramcopy.R
 import com.shenfeld.telegramcopy.ui.fragments.SettingsFragment
+import com.shenfeld.telegramcopy.utils.replaceFragment
 
 class AppDrawer(var mainActivity: AppCompatActivity, var toolbar: Toolbar) {
 
@@ -86,9 +87,7 @@ class AppDrawer(var mainActivity: AppCompatActivity, var toolbar: Toolbar) {
                     drawerItem: IDrawerItem<*>
                 ): Boolean {
                     when (position) {
-                        7 -> mainActivity.supportFragmentManager.beginTransaction()
-                            .addToBackStack("")
-                            .replace(R.id.main_data_container, SettingsFragment()).commit()
+                        7 -> mainActivity.replaceFragment(SettingsFragment(), true)
                     }
                     return false
                 }
