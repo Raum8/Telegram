@@ -13,4 +13,6 @@
     <string name="text_label_username">Имя пользователя</string>
     <string name="text_label_settings_bio">Напишите немного о себе</string>
     <string name="text_settings_bio">О себе</string>
+    <string name="text_settings_menu_change_name">Изменить имя</string>
+    <string name="text_settings_menu_exit">Выход</string>
 </resources>
