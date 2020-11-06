@@ -42,6 +42,7 @@
     <EditText
         android:id="@+id/et_enter_code"
         style="@style/editText"
+        android:layout_width="wrap_content"
         android:autofillHints=""
         android:gravity="center"
         android:hint="@string/text_enter_code_default"

@@ -51,6 +51,7 @@ class EnterPhoneFragment : Fragment(R.layout.fragment_enter_phone) {
             override fun onCodeSent(id: String, token: PhoneAuthProvider.ForceResendingToken) {
                 replaceFragment(EnterCodeFragment(mPhoneNumber, id), false)
             }
+
         }
 
     }
@@ -70,7 +71,8 @@ class EnterPhoneFragment : Fragment(R.layout.fragment_enter_phone) {
             .setTimeout(60L, TimeUnit.SECONDS)
             .setActivity(activity as RegisterActivity)
             .setCallbacks(mCallback)
-        PhoneAuthProvider.verifyPhoneNumber(options.build())
+            .build()
+        PhoneAuthProvider.verifyPhoneNumber(options)
     }
 
 }

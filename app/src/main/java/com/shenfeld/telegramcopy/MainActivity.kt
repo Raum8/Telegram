@@ -8,13 +8,14 @@ import com.shenfeld.telegramcopy.databinding.ActivityMainBinding
 import com.shenfeld.telegramcopy.ui.fragments.ChatsFragment
 import com.shenfeld.telegramcopy.ui.objects.AppDrawer
 import com.shenfeld.telegramcopy.utils.AUTH
+import com.shenfeld.telegramcopy.utils.initFirebase
 import com.shenfeld.telegramcopy.utils.replaceActivity
 import com.shenfeld.telegramcopy.utils.replaceFragment
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var mBinding: ActivityMainBinding
-    private lateinit var mAppDrawer: AppDrawer
+    lateinit var mAppDrawer: AppDrawer
     private lateinit var mToolbar: androidx.appcompat.widget.Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,6 +44,6 @@ class MainActivity : AppCompatActivity() {
     private fun initFields() {
         mToolbar = mBinding.toolbarMain
         mAppDrawer = AppDrawer(this, mToolbar)
-        AUTH = FirebaseAuth.getInstance()
+        initFirebase()
     }
 }

@@ -5,6 +5,7 @@ import android.os.Bundle
 import com.shenfeld.telegramcopy.R
 import com.shenfeld.telegramcopy.databinding.ActivityRegisterBinding
 import com.shenfeld.telegramcopy.ui.fragments.EnterPhoneFragment
+import com.shenfeld.telegramcopy.utils.initFirebase
 import com.shenfeld.telegramcopy.utils.replaceFragment
 
 class RegisterActivity : AppCompatActivity() {
@@ -15,6 +16,7 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         mBinding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
+        initFirebase()
     }
 
     override fun onStart() {
