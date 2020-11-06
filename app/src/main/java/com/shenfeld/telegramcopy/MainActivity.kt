@@ -3,14 +3,15 @@ package com.shenfeld.telegramcopy
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 import com.shenfeld.telegramcopy.activities.RegisterActivity
 import com.shenfeld.telegramcopy.databinding.ActivityMainBinding
+import com.shenfeld.telegramcopy.models.UserModel
 import com.shenfeld.telegramcopy.ui.fragments.ChatsFragment
 import com.shenfeld.telegramcopy.ui.objects.AppDrawer
-import com.shenfeld.telegramcopy.utils.AUTH
-import com.shenfeld.telegramcopy.utils.initFirebase
-import com.shenfeld.telegramcopy.utils.replaceActivity
-import com.shenfeld.telegramcopy.utils.replaceFragment
+import com.shenfeld.telegramcopy.utils.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -45,5 +46,13 @@ class MainActivity : AppCompatActivity() {
         mToolbar = mBinding.toolbarMain
         mAppDrawer = AppDrawer(this, mToolbar)
         initFirebase()
+        initUser()
+    }
+
+    private fun initUser() {
+        REF_DATABASE_ROOT.child(NODE_USERS).child(UID)
+            .addListenerForSingleValueEvent(AppValueEventListener {
+                USER = it.getValue(UserModel::class.java) ?: UserModel()
+            })
     }
 }

@@ -9,6 +9,7 @@ import com.google.firebase.auth.PhoneAuthProvider
 import com.shenfeld.telegramcopy.MainActivity
 import com.shenfeld.telegramcopy.R
 import com.shenfeld.telegramcopy.activities.RegisterActivity
+import com.shenfeld.telegramcopy.models.UserModel
 import com.shenfeld.telegramcopy.utils.*
 import kotlinx.android.synthetic.main.fragment_enter_code.*
 
@@ -34,7 +35,12 @@ class EnterCodeFragment(private val mPhoneNumber: String, private val id: String
                 val uid = AUTH.currentUser?.uid.toString()
                 dateMap[CHILD_ID] = uid
                 dateMap[CHILD_PHONE] = mPhoneNumber
-                dateMap[CHILD_USERNAME] = uid
+                //dateMap[CHILD_USERNAME] = USER.username
+                REF_DATABASE_ROOT.child(NODE_USERS).child(uid)
+                    .addListenerForSingleValueEvent(AppValueEventListener {
+                        val userTemp = it.getValue(USER::class.java) ?: UserModel()
+                        dateMap[CHILD_USERNAME] = userTemp.username
+                    })
 
                 REF_DATABASE_ROOT.child(NODE_USERS).child(uid).updateChildren(dateMap)
                     .addOnCompleteListener { onComplete ->

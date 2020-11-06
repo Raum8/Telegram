@@ -9,11 +9,17 @@ import com.shenfeld.telegramcopy.utils.*
 import kotlinx.android.synthetic.main.fragment_change_name.*
 import java.util.*
 
-class ChangeNameFragment : Fragment(R.layout.fragment_change_name) {
+class ChangeNameFragment : BaseFragment(R.layout.fragment_change_name) {
 
     override fun onResume() {
         super.onResume()
         setHasOptionsMenu(true)
+        val fullNameList = USER.fullname.split(" ")
+        if(fullNameList.size > 1) {
+            settings_input_name.setText(fullNameList[0])
+            settings_input_surname.setText(fullNameList[1])
+        } else
+            settings_input_name.setText(fullNameList[0])
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -37,7 +43,7 @@ class ChangeNameFragment : Fragment(R.layout.fragment_change_name) {
             val fullName = "${name.capitalize(Locale.ROOT)} ${surname.capitalize(Locale.ROOT)}"
             REF_DATABASE_ROOT.child(NODE_USERS).child(UID).child(CHILD_FULL_NAME).setValue(fullName)
                 .addOnCompleteListener {
-                    if(it.isSuccessful) {
+                    if (it.isSuccessful) {
                         showToast(getString(R.string.toast_data_update))
                         USER.fullname = fullName
                         fragmentManager?.popBackStack()
