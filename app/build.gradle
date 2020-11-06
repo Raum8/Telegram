@@ -1,11 +1,12 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.0"
-    viewBinding.enabled = true
+    buildFeatures.viewBinding = true
     defaultConfig {
         applicationId "com.shenfeld.telegramcopy"
         minSdkVersion 21
@@ -29,13 +30,14 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.3.2'
     implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation "com.mikepenz:materialdrawer:7.0.0"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-
+    implementation "org.jetbrains.kotlin:kotlin-reflect:1.4.10"
+    implementation 'com.google.firebase:firebase-auth:20.0.0'
     //Circle Image View
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
@@ -46,5 +48,6 @@ dependencies {
 
     // Add for NavController support
     implementation "com.mikepenz:materialdrawer-nav:7.0.0"
+
 
 }
