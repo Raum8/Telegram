@@ -1,38 +1,20 @@
 package com.shenfeld.telegramcopy.ui.fragments
 
-import android.os.Bundle
-import android.view.*
-import androidx.fragment.app.Fragment
-import com.shenfeld.telegramcopy.MainActivity
 import com.shenfeld.telegramcopy.R
 import com.shenfeld.telegramcopy.utils.*
 import kotlinx.android.synthetic.main.fragment_change_user_name.*
-import kotlinx.android.synthetic.main.fragment_settings.*
 import java.util.*
 
-class ChangeUserNameFragment : BaseFragment(R.layout.fragment_change_user_name) {
+class ChangeUserNameFragment : BaseChangeFragment(R.layout.fragment_change_user_name) {
 
     lateinit var mNewUsername: String
 
     override fun onResume() {
         super.onResume()
-        setHasOptionsMenu(true)
         settings_input_username.setText(USER.username)
     }
 
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        (activity as MainActivity).menuInflater.inflate(R.menu.settings_confirm_menu, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.settings_confirm_changes -> changeUsername()
-        }
-        return true
-    }
-
-    fun changeUsername() {
+    override fun change() {
         mNewUsername = settings_input_username.text.toString().toLowerCase(Locale.getDefault())
         if (mNewUsername.isEmpty())
             showToast("Имя пользователя пустое")
@@ -42,12 +24,12 @@ class ChangeUserNameFragment : BaseFragment(R.layout.fragment_change_user_name) 
                     if (it.hasChild(mNewUsername)) {
                         showToast("Имя уже занято")
                     } else
-                        change()
+                        changeUsername()
                 })
         }
     }
 
-    private fun change() {
+    private fun changeUsername() {
         REF_DATABASE_ROOT.child(NODE_USERNAMES).child(mNewUsername).setValue(UID)
             .addOnCompleteListener {
                 if (it.isSuccessful) {
