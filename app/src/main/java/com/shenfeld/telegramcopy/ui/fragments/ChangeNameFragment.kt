@@ -1,9 +1,5 @@
 package com.shenfeld.telegramcopy.ui.fragments
 
-import android.os.Bundle
-import android.view.*
-import androidx.fragment.app.Fragment
-import com.shenfeld.telegramcopy.MainActivity
 import com.shenfeld.telegramcopy.R
 import com.shenfeld.telegramcopy.utils.*
 import kotlinx.android.synthetic.main.fragment_change_name.*
@@ -33,7 +29,7 @@ class ChangeNameFragment : BaseChangeFragment(R.layout.fragment_change_name) {
             showToast(getString(R.string.settings_toast_name))
         else {
             val fullName = "${name.capitalize(Locale.ROOT)} ${surname.capitalize(Locale.ROOT)}"
-            REF_DATABASE_ROOT.child(NODE_USERS).child(UID).child(CHILD_FULL_NAME).setValue(fullName)
+            REF_DATABASE_ROOT.child(NODE_USERS).child(CURRENT_UID).child(CHILD_FULL_NAME).setValue(fullName)
                 .addOnCompleteListener {
                     if (it.isSuccessful) {
                         showToast(getString(R.string.toast_data_update))

@@ -12,10 +12,7 @@ import com.google.firebase.auth.PhoneAuthProvider
 import com.shenfeld.telegramcopy.MainActivity
 import com.shenfeld.telegramcopy.R
 import com.shenfeld.telegramcopy.activities.RegisterActivity
-import com.shenfeld.telegramcopy.utils.AUTH
-import com.shenfeld.telegramcopy.utils.replaceActivity
-import com.shenfeld.telegramcopy.utils.replaceFragment
-import com.shenfeld.telegramcopy.utils.showToast
+import com.shenfeld.telegramcopy.utils.*
 import kotlinx.android.synthetic.main.fragment_enter_phone.*
 import java.sql.Time
 import java.util.concurrent.TimeUnit
@@ -37,7 +34,7 @@ class EnterPhoneFragment : Fragment(R.layout.fragment_enter_phone) {
                 AUTH.signInWithCredential(credential).addOnCompleteListener {task ->
                     if (task.isSuccessful) {
                         showToast("Добро пожаловать")
-                        (activity as RegisterActivity).replaceActivity(MainActivity())
+                        (APP_ACTIVITY).replaceActivity(MainActivity())
                     } else if(!task.isSuccessful) {
                         showToast(task.exception?.message.toString())
                     }
